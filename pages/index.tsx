@@ -26,7 +26,7 @@ const HomeScreen = () => {
   return (
     <div className='bg-gray-100 min-h-screen'>
       <Head>
-        <title>AJ Shopping</title>
+        <title>AJ Shopping - Jatin & Anas</title>
         <meta
           name='description'
           content='Shopping mart created for testing google analytics'
