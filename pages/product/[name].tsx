@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import data, { Product } from '../../data';
 
-const ProductScreen = ({ name }) => {
+const ProductScreen = ({ product }: { product: Product }) => {
   const router = useRouter();
-
-  const [product, setProduct] = useState<Product | undefined>();
-
-  useEffect(() => {
-    const filtered = data.filter((pd) =>
-      pd.name.toLowerCase().includes(name.toLowerCase()!)
-    );
-    setProduct(filtered[0]);
-  }, []);
 
   return (
     <main style={{ maxWidth: 1000 }} className='mx-auto py-4 px-6'>
@@ -23,13 +14,13 @@ const ProductScreen = ({ name }) => {
       </div>
       <div className='grid grid-cols-2 gap-6 my-3'>
         <div>
-          <img src={product?.image} alt='' className='rounded-xl' />
+          <img src={product.image} alt='' className='rounded-xl' />
         </div>
         <div>
-          <h1 className='text-2xl font-bold'>{product?.name}</h1>
-          <p className='text-2xl font-medium my-3'>Rs. {product?.price}</p>
+          <h1 className='text-2xl font-bold'>{product.name}</h1>
+          <p className='text-2xl font-medium my-3'>Rs. {product.price}</p>
           <ul className='list-disc ml-4 mb-8'>
-            {product?.description.map((p) => (
+            {product.description.map((p) => (
               <li key={p}>{p}</li>
             ))}
           </ul>
@@ -52,5 +43,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  return { props: { name: params.name } };
+  const product: Product = data.filter((pd) =>
+    pd.name.toLowerCase().includes(params.name.toLowerCase()!)
+  )[0];
+  return { props: { product } };
 }
