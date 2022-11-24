@@ -47,11 +47,8 @@ const HomeScreen = () => {
         <div className='grid grid-cols-3 gap-4 my-6'>
           {renderData.length ? (
             renderData.map((product, i) => (
-              <Link href={`/product?name=${product.name}`}>
-                <div
-                  key={i}
-                  className='rounded-lg overflow-hidden p-2 border border-transparent cursor-pointer hover:shadow-lg hover:bg-white'
-                >
+              <Link href={`/product/${product.name}`} key={i}>
+                <div className='rounded-lg overflow-hidden p-2 border border-transparent cursor-pointer hover:shadow-lg hover:bg-white'>
                   <img
                     src={product.image}
                     alt={product.name}
