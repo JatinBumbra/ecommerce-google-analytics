@@ -28,7 +28,7 @@ const HomeScreen = () => {
       <Head>
         <script
           async
-          src='https://www.googletagmanager.com/gtag/js?id=G-CCQN0F2REZ'
+          src='https://www.googletagmanager.com/gtag/js?id=G-YQMTPQCD7R'
         />
 
         <script
@@ -37,7 +37,7 @@ const HomeScreen = () => {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-CCQN0F2REZ');
+                gtag('config', 'G-YQMTPQCD7R');
             `,
           }}
         />
