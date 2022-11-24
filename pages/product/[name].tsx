@@ -42,7 +42,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { name: string } }) {
   const product: Product = data.filter((pd) =>
     pd.name.toLowerCase().includes(params.name.toLowerCase()!)
   )[0];
