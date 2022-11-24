@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import data, { Product } from '../data';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -24,6 +25,14 @@ const HomeScreen = () => {
 
   return (
     <div className='bg-gray-100 min-h-screen'>
+      <Head>
+        <title>AJ Shopping</title>
+        <meta
+          name='description'
+          content='Shopping mart created for testing google analytics'
+        />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <main style={{ maxWidth: 1000 }} className='mx-auto py-4 px-6'>
         <div className='flex rounded-lg overflow-hidden bg-white'>
           <div className='p-3 flex items-center space-x-2 flex-1 border rounded-l-lg'>
