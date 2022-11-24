@@ -36,7 +36,10 @@ const HomeScreen = () => {
       <main style={{ maxWidth: 1000 }} className='mx-auto py-4 px-6'>
         <div className='flex rounded-lg overflow-hidden bg-white'>
           <div className='p-3 flex items-center space-x-2 flex-1 border rounded-l-lg'>
-            <MagnifyingGlassIcon height={24} className='text-neutral-400' />
+            <MagnifyingGlassIcon
+              height={24}
+              className='text-neutral-400 hidden sm:block'
+            />
             <input
               value={searchTerm}
               onKeyDown={handleKeyDown}
@@ -47,13 +50,14 @@ const HomeScreen = () => {
             />
           </div>
           <button
-            className='bg-gradient-to-r from-slate-700 to-black text-white px-12 font-bold transition-all hover:opacity-80'
+            className='bg-gradient-to-r from-slate-700 to-black text-white px-3 sm:px-12 font-bold transition-all py-3 hover:opacity-80'
             onClick={handleSearch}
           >
-            Search
+            <MagnifyingGlassIcon height={24} className='sm:hidden' />
+            <span className='hidden sm:block'>Search</span>
           </button>
         </div>
-        <div className='grid grid-cols-3 gap-4 my-6'>
+        <div className='grid grid-cols-1 gap-6 sm:gap-4 my-6 sm:grid-cols-2 md:grid-cols-3'>
           {renderData.length ? (
             renderData.map((product, i) => (
               <Link href={`/product/${product.name}`} key={i}>

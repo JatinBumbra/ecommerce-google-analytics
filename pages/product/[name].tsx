@@ -12,7 +12,7 @@ const ProductScreen = ({ product }: { product: Product }) => {
           <p onClick={() => router.back()}>Back</p>
         </div>
       </div>
-      <div className='grid grid-cols-2 gap-6 my-3'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 my-3'>
         <div>
           <img src={product.image} alt='' className='rounded-xl' />
         </div>
