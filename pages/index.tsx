@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import data, { Product } from '../data';
-import { useState } from 'react';
+import Link from 'next/link';
 
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -21,8 +21,6 @@ const HomeScreen = () => {
   const handleKeyDown = (e: any) => {
     if (e.keyCode === 13) handleSearch();
   };
-
-  const navigate = useNavigate();
 
   return (
     <div className='bg-gray-100 min-h-screen'>
@@ -49,18 +47,19 @@ const HomeScreen = () => {
         <div className='grid grid-cols-3 gap-4 my-6'>
           {renderData.length ? (
             renderData.map((product, i) => (
-              <div
-                key={i}
-                className='rounded-lg overflow-hidden p-2 border border-transparent cursor-pointer hover:shadow-lg hover:bg-white'
-                onClick={() => navigate(`/product?name=${product.name}`)}
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className='rounded-lg h-60 object-cover w-full'
-                />
-                <h1 className='mt-1 font-bold text-sm'>{product.name}</h1>
-              </div>
+              <Link href={`/product?name=${product.name}`}>
+                <div
+                  key={i}
+                  className='rounded-lg overflow-hidden p-2 border border-transparent cursor-pointer hover:shadow-lg hover:bg-white'
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className='rounded-lg h-60 object-cover w-full'
+                  />
+                  <h1 className='mt-1 font-bold text-sm'>{product.name}</h1>
+                </div>
+              </Link>
             ))
           ) : (
             <div className='my-3 text-2xl'>

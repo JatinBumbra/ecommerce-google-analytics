@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import data, { Product } from '../data';
 
 const ProductScreen = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [product, setProduct] = useState<Product | undefined>();
 
@@ -21,7 +20,7 @@ const ProductScreen = () => {
     <main style={{ maxWidth: 1000 }} className='mx-auto py-4 px-6'>
       <div className='sticky top-0 z-10 bg-white border-b '>
         <div className='bg-white my-3 inline-block p-3 cursor-pointer rounded transition-all hover:bg-neutral-200'>
-          <p onClick={() => navigate(-1)}>Back</p>
+          <p onClick={() => router.back()}>Back</p>
         </div>
       </div>
       <div className='grid grid-cols-2 gap-6 my-3'>
